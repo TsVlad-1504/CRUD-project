@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.http.ResponseEntity;
 import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,11 +63,9 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-
-        userService.deleteUser(id);
-
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") int id) {
+        userService.deleteUser((long) id);
         return "redirect:/users";
     }
 }
